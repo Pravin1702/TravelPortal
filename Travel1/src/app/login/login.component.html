@@ -1,0 +1,8 @@
+<div>
+    <label class="form-control">Name</label>
+    <input type="text" [(ngModel)]="user.Name" class="form-control" >
+    <label class="form-control">Password</label>
+    <input type="text" class="form-control" [(ngModel)]="this.user.Password">
+    <button (click)="login()" class="btn btn-success">Login</button>
+    <button (click)="reset()" class="btn btn-danger">Cancel</button>
+</div>

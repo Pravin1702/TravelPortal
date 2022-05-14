@@ -21,8 +21,16 @@ export class LoginComponent implements OnInit {
 
   login(){
     console.log(this.user);
-    var emp=this.userservice.Login(this.user).subscribe(sample=>{
+    this.userservice.Login(this.user).subscribe(sample=>{
       console.log(sample)
+     var usr=sample as User;
+     if(usr.role=="admin")
+     {
+      this.router.navigateByUrl("registere");
+     } 
+     else{
+      this.router.navigateByUrl("request");
+     }
     });
   }
 

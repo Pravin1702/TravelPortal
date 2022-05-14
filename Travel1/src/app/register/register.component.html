@@ -1,1 +1,23 @@
-<p>register works!</p>
+<div>
+    <!-- <label class ="form-control">UserId</label>
+      <input type="text" [(ngModel)]="register.EId" class="form-control"> -->
+      <label class ="form-control">Username</label>
+      <input type="text" [(ngModel)]="register.Empname" class="form-control">
+      <label class ="form-control">Password</label>
+      <input type="password" [(ngModel)]="register.Password" class="form-control">
+      <!-- <label class ="form-control">Token</label>
+      <input type="text" [(ngModel)]="register.Token" class="form-control"> -->
+      <label class ="form-control">Role</label>
+      <input type="text" [(ngModel)]="register.Role" class="form-control">
+      <label class ="form-control">ManagerId</label>
+      <input type="number" [(ngModel)]="register.ManagerId" class="form-control">
+      <label class ="form-control">Age</label>
+      <input type="number" [(ngModel)]="register.Age" class="form-control">
+      <label class ="form-control">MobileNumber</label>
+      <input type="number" [(ngModel)]="register.Mobile" class="form-control">
+      <label class ="form-control">Email</label>
+      <input type="text" [(ngModel)]="register.Email" class="form-control">
+      <label class ="form-control">Region</label>
+      <input type="text" [(ngModel)]="register.Region" class="form-control">
+        <button class="btn btn-success" (click)="insertEmp()">Add Users</button>
+  </div>

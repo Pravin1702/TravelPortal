@@ -1,0 +1,25 @@
+<div class="wrapper">
+    <div class="logo">
+        <img src="../assets/images/logo.jpg" alt="">
+    </div>
+    <br>
+    <br>
+    <h3 style="font-family:'Courier New', Courier, monospace;padding-left:30px ;font: weight 800;">TRAVEL-PORTAL</h3>
+    <div class="padding bottom:40px;"></div>
+
+    <br>
+    <div class="container mt-2"></div>
+    <form class="p-3 mt-3">
+        <div class="form-field d-flex align-items-center">
+            <span class="far fa-user"></span>
+            <input style="font-size: 1rem;" type="text" name="userName" [(ngModel)]="user.name" placeholder="Username">
+        </div>
+        <div class="form-field d-flex align-items-center">
+            <span class="fas fa-key"></span>
+            <input style="font-size: 1rem;" type="password" name="password"  [(ngModel)]="user.password" placeholder="Password">
+        </div>
+        <br>
+        <button (click)="login()" class="btn mt-3" style="width: 100px; margin-left: 80px;">Login</button>
+        <button (click)="reset()" class="btn mt-3" style="width: 100px; margin-left: 80px;">Cancel</button>
+    </form>
+</div>

@@ -1,0 +1,34 @@
+<h1><span>View Employees Request</span></h1>
+<a class="btn" >{{urole}}</a>
+<table class="table" id='tab'>
+    <thead>
+    <tr>
+        <th scope="col">TravelId</th>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Reason</th>
+        <th scope="col">Proof</th>
+        <th scope="col">Location</th>
+        <th scope="col">Travel</th>
+        <th scope="col">Numbers of Days</th>
+        <th scope="col">From Date</th>
+        <th scope="col">To Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let e of request">
+        <td>{{ e.travelId}}</td>
+        <td>{{ e.employeeId}}</td>
+        <td>{{ e.name}}</td>
+        <td>{{ e.reason}}</td>
+        <td>{{ e.proof}}</td>
+        <td>{{ e.loc}}</td>
+        <td>{{ e.isLocal }}</td>
+        <td>{{ e.nDays}}</td>
+        <td>{{ e.fromDate}}</td>
+        <td>{{ e.toDate}}</td>
+        <button class="btn btn-primary" (click)="Ok(e)" >Ok</button>
+        <button class="btn btn-primary" (click)="Cancel(e)" >Cancel</button>
+    </tr>
+    </tbody>
+</table>  

@@ -1,7 +1,9 @@
 import { OverlayModule } from '@angular/cdk/overlay';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Request } from '../models/request';
+import { ProfileComponent } from '../profile/profile.component';
 import { RequestService } from '../service/request.service';
 
 @Component({
@@ -12,10 +14,13 @@ import { RequestService } from '../service/request.service';
 export class ViewrequestComponent implements OnInit {
   request:any;  
   urole:any;
+  name:any;
 
   constructor(private requestservice:RequestService,
-    private router:Router) {
+    private router:Router,
+    private dialogRef:MatDialog) {
       this.urole=localStorage.getItem("role");
+      this.name=localStorage.getItem("uname");
       if(this.urole=='manager')
       {
         console.log(this.urole);
@@ -34,21 +39,62 @@ export class ViewrequestComponent implements OnInit {
      }
      
      Ok(e:Request){
-       e.managerapp=1;
-       this.requestservice.ManagerRequest(e).subscribe(sample=>{
-        console.log(sample);
-       });
-       this.router.navigateByUrl("manager");
-
+       if(this.urole=='manager'){
+        e.managerapp="approvel";
+        this.requestservice.ManagerRequest(e).subscribe(sample=>{
+         console.log(sample);
+        });
+        this.router.navigateByUrl("manager");
+       }   
+       else if(this.urole=='deptment'){
+        e.departmentapp="approvel";
+        this.requestservice.DepartRequest(e).subscribe(sample=>{
+         console.log(sample);
+        });
+        this.router.navigateByUrl("head");
+       }
      }
      Cancel(e:Request){
-      e.managerapp=2;
+      if(this.urole=='manager'){
+        e.managerapp="cancel";
       this.requestservice.ManagerRequest(e).subscribe(sample=>{
        console.log(sample);
       });
       this.router.navigateByUrl("manager");
+      }
+      else if(this.urole=='deptment'){
+        e.departmentapp="cancel";
+        this.requestservice.DepartRequest(e).subscribe(sample=>{
+         console.log(sample);
+        });
+        this.router.navigateByUrl("head");
+       }
+      
      }
   ngOnInit(): void {
   }
+  Home(){
+
+  }
+  Request(){
+    this.router.navigateByUrl("request");
+  }
+  status(){
+    this.router.navigateByUrl("status");
+  }
+  paststatus(){
+  
+  }
+  Logout(){
+    localStorage.clear();
+    this.router.navigateByUrl(""); 
+  }
+  open(){
+    this.dialogRef.open(ProfileComponent);
+  }
+  
+   reset(){
+     this.request=new Request();
+   }
 
 }

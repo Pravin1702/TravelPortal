@@ -20,6 +20,20 @@ namespace TravelAPI.Controllers
         }
 
         [HttpPost]
+        [Route("Employee")]
+
+        public async Task<ActionResult<Request>> Employee(Request user)
+        {
+            var emp = await _repo.Employee(user);
+            if (emp == null)
+            {
+                return BadRequest("Some thing is rong please try later");
+            }
+            return Created("Approve Manager", emp);
+        }
+
+
+        [HttpPost]
         [Route("Manager")]
 
         public async Task<ActionResult<Request>> Create(Request user)
@@ -58,30 +72,8 @@ namespace TravelAPI.Controllers
             return Created("Approve Manager", emp);
         }
 
-        [HttpPost]
-        [Route("Employee")]
-
-        public async Task<ActionResult<Request>> Employee(Request user)
-        {
-            var emp =await _repo.Employee(user);
-            if (emp == null)
-            {
-                return BadRequest("Some thing is rong please try later");
-            }
-            return Created("Approve Manager", emp);
-        }
-
-        [HttpGet]
-        [Route("GetAll_Travel")]
-
-        public async Task<ActionResult<IEnumerable<User>>> GetAllProducts()
-        {
-            var prd =_repo.GetAll().ToList();
-            if (prd.Count == 0)
-                return NotFound("No Employee present");
-            return Ok(prd);
-        }
-
+     
+     
         [HttpGet]
         [Route("GetAll_Manager")]
 
@@ -114,5 +106,30 @@ namespace TravelAPI.Controllers
                 return NotFound("No Employee present");
             return Ok(prd);
         }
+
+        [HttpGet]
+        [Route("GetAll_Travel")]
+
+        public async Task<ActionResult<IEnumerable<User>>> GetAllProducts()
+        {
+            var prd = _repo.GetAll().ToList();
+            if (prd.Count == 0)
+                return NotFound("No Employee present");
+            return Ok(prd);
+        }
+
+        [HttpPost]
+        [Route("EmployeebyId")]
+
+        public async Task<ActionResult<Request>> EmployeebyId(Request user)
+        {
+            var emp = await _repo.EmployeebyId(user);
+            if (emp == null)
+            {
+                return BadRequest("Some thing is rong please try later");
+            }
+            return Created("Approve Manager", emp);
+        }
+
     }
 }

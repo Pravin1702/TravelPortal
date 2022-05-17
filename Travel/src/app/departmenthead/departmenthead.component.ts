@@ -33,7 +33,14 @@ export class DepartmentheadComponent implements OnInit {
    }
 
    viewCart(){
-     this.router.navigateByUrl("view");
+     this.router.navigateByUrl("viewcart");
+   }
+   paststatus(){
+
+   }
+   status(){
+    this.router.navigateByUrl("status");
+
    }
 
 }

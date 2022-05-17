@@ -23,6 +23,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ViewrequestComponent } from './viewrequest/viewrequest.component';
 import { ViewsComponent } from './views/views.component';
 import { ApprovelComponent } from './approvel/approvel.component';
+import { TicketbookingComponent } from './ticketbooking/ticketbooking.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ApprovelComponent } from './approvel/approvel.component';
     ViewrequestComponent,
     ViewsComponent,
     ApprovelComponent,
+    TicketbookingComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,10 @@
 #divCart{
   float: right;
 }
+img{
+margin-left: -100px;
+  height: 60px;
+}
 
 .btn{
   text-transform: capitalize;
@@ -20,4 +24,16 @@
   align-items: center;
   justify-content: space-between;
   
+  
+}
+table{
+  background-color: antiquewhite;
+}
+.nav-item{
+  
+ margin: 5px;
+}
+
+span{
+  margin-left: 40%;
 }

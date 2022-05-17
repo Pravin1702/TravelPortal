@@ -44,6 +44,6 @@ export class RequestService{
 
     
     getAllEmployee(){
-        return this.httpClient.get("http://localhost:54465​/api/Request/GetAll_Travel");
+        return this.httpClient.get("http://localhost:54465/api/Request/GetAll_Travel");
     }
 }

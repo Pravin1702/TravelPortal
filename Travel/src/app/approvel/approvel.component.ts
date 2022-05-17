@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { ProfileComponent } from '../profile/profile.component';
 import { RequestService } from '../service/request.service';
 
 @Component({
@@ -9,41 +12,43 @@ import { RequestService } from '../service/request.service';
 export class ApprovelComponent implements OnInit {
 views:any;
 role:any;
-  constructor(private requestservice:RequestService) {
+id:any;
+name:any;
+  constructor(private requestservice:RequestService,
+    private router:Router,
+    private dialogRef:MatDialog) {
     this.role=localStorage.getItem("role");
-    if(this.role=='manager'){
-      requestservice.getAllManager().subscribe(data=>{
-        console.log(data);
-        this.views=data 
-      });
-    }
-    else if(this.role=='department'){
-      requestservice.getAllHead().subscribe(data=>{
-        console.log(data);
-        this.views=data 
-      });
-    }
-    else if(this.role=='facility'){
-      requestservice.getAllFacility().subscribe(data=>{
-        console.log(data);
-        this.views=data 
-      });
-    }
-    else if(this.role=='hr'){
-      requestservice.getAllEmployee().subscribe(data=>{
-        console.log(data);
-        this.views=data 
-      });
-      
-    }
-    else{
-      requestservice.getAllEmployee().subscribe(data=>{
-        console.log(data);
-        this.views=data 
-      });
-    }
-    
+    this.name=localStorage.getItem("uname");
+    this.id=localStorage.getItem("id");
+    this.requestservice.getAllEmployee().subscribe(data=>{
+      console.log(data);
+      this.views=data
+    }); 
    }
+
+   Home(){
+
+   }
+   Request(){
+    this.router.navigateByUrl("request");
+
+  }
+  status(){
+    this.router.navigateByUrl("status");
+
+  }
+  paststatus(){
+
+  }
+  Logout(){
+    localStorage.clear();
+    this.router.navigateByUrl("");
+  }
+  open(){
+    this.dialogRef.open(ProfileComponent);
+
+  }
+
    
 
   ngOnInit(): void {

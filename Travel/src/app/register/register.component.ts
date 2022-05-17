@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { User } from '../models/user';
+import { ProfileComponent } from '../profile/profile.component';
 import { UserService } from '../service/user.service';
 
 @Component({
@@ -10,10 +12,13 @@ import { UserService } from '../service/user.service';
 })
 export class RegisterComponent implements OnInit {
   user:User;
-  uname:any;
+  name:any;
 
   constructor(private userservice:UserService,
-    private router:Router) {
+    private router:Router,
+    private dialogRef:MatDialog) {
+    this.name=localStorage.getItem("uname");
+
     this.user=new User();
    }
 
@@ -29,6 +34,29 @@ export class RegisterComponent implements OnInit {
       this.user=new User();
       }
     });
+  }
+
+  Home(){
+
+  }
+  Request(){
+    this.router.navigateByUrl("request");
+
+  }
+  status(){
+    this.router.navigateByUrl("status");
+
+  }
+  paststatus(){
+
+  }
+  Logout(){
+    localStorage.clear();
+    this.router.navigateByUrl("");
+  }
+  open(){
+    this.dialogRef.open(ProfileComponent);
+
   }
 
 }

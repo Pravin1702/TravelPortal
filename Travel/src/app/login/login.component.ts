@@ -90,7 +90,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("mob",JSON.stringify(usr.mobile));
         localStorage.setItem("dob",JSON.stringify(usr.birthday));
         
-        this.router.navigateByUrl("register");
+        this.router.navigateByUrl("head");
       }
       else
       {

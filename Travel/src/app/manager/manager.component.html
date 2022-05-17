@@ -1,7 +1,6 @@
 <div class="nav">
-  <nav class="navbar navbar-light bg-light">
-    <span class="navbar-brand mb-0 h1">Manager</span>
-  </nav>
+  <nav class="navbar navbar-expand-lg ">
+    <img src="../assets/images/Kanini.svg">
       <li class="nav-item active">
         <a class="btn" (click)="viewCart()">View Employee Request</a>
       </li>
@@ -9,8 +8,14 @@
         <a class="btn" (click)="Request()">Add Request</a>
       </li>
       <li class="nav-item">
-          <a class="btn" (click)="Logout()">Logout</a>
-        </li>
-<a class="btn" (click)="open()"  >{{name}}</a>
-   
-  </div>
+        <a class="btn" (click)="status()">My Status</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn" (click)="paststatus()">My Past Status</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn" (click)="Logout()">Logout</a>
+      </li>
+      <a class="btn" (click)="open()">{{name}}</a>
+  </nav>
+</div>

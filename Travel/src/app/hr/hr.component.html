@@ -1,7 +1,6 @@
 <div class="nav">
-  <nav class="navbar navbar-light bg-light">
-    <span class="navbar-brand mb-0 h1">HR</span>
-  </nav>
+  <nav class="navbar navbar-expand-lg ">
+    <img src="../assets/images/Kanini.svg">
       <li class="nav-item active">
         <a class="btn" (click)="AddEmployee()">AddEmployee</a>
       </li>
@@ -9,11 +8,23 @@
         <a class="btn" (click)="GetAllEmployee()" >View AllEmployees</a>
       </li>
       <li class="nav-item">
-        <a class="btn" (click)="GetAllTravelEmployee()" >View Traveled Request</a>
+        <a class="btn" (click)="request()" >Add Request</a>
       </li>
       <li class="nav-item">
-          <a class="btn" (click)="Logout()">Logout</a>
-        </li>
-<a class="btn" (click)="open()"  >{{name}}</a>
-   
-  </div>
+        <a class="btn" (click)="status()" >online Request</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn" (click)="paststatus()" >Past Request</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn" (click)="GetAllonline()" >Employee online Request</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn" (click)="GetAllTravelEmployee()" >Employee Past Request</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn" (click)="Logout()">Logout</a>
+      </li>
+      <a class="btn" (click)="open()"  >{{name}}</a>
+  </nav>
+</div>

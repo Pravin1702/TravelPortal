@@ -35,5 +35,11 @@ export class ManagerComponent implements OnInit {
    viewCart(){
      this.router.navigateByUrl("viewcart");
    }
+   status(){
+    this.router.navigateByUrl("status");
+   }
+   paststatus(){
+
+   }
 
 }

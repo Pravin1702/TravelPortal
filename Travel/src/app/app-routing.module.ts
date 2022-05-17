@@ -11,6 +11,7 @@ import { ManagerComponent } from './manager/manager.component';
 import { MenuComponent } from './menu/menu.component';
 import { RegisterComponent } from './register/register.component';
 import { RequestComponent } from './request/request.component';
+import { TicketbookingComponent } from './ticketbooking/ticketbooking.component';
 import { ViewrequestComponent } from './viewrequest/viewrequest.component';
 import { ViewsComponent } from './views/views.component';
 
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:'viewcart',component:ViewrequestComponent},
   {path:'view',component:ViewsComponent},
   {path:'register',component:RegisterComponent},
-  {path:'approvel',component:ApprovelComponent},
+  {path:'status',component:ApprovelComponent},
+  {path:'ticketprovider',component:TicketbookingComponent},
   {path:'request',component:RequestComponent},
   {path:'employee',component:EmployeeComponent},
   {path:'hr',component:HrComponent},

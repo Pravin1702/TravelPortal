@@ -21,7 +21,7 @@ export class FacilityComponent implements OnInit {
   }
 
   ViewAllRequest(){
-    this.router.navigateByUrl("viewcart");
+    this.router.navigateByUrl("ticketprovider");
   }
 
   open(){
@@ -31,6 +31,17 @@ export class FacilityComponent implements OnInit {
   Logout(){
     localStorage.clear();
     this.router.navigateByUrl("");
+   }
+
+   request(){
+
+   }
+   paststatus(){
+
+   }
+   status(){
+    this.router.navigateByUrl("status");
+
    }
 
 }

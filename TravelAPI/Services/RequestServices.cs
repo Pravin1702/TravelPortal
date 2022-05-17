@@ -76,13 +76,19 @@ namespace TravelAPI.Services
             cmd.Parameters.AddWithValue("@eId", request.EmployeeId);
             cmd.Parameters.AddWithValue("@uname", request.Name);
             cmd.Parameters.AddWithValue("@reason", request.reason);
-            cmd.Parameters.AddWithValue("@proof", request.Proof);
             cmd.Parameters.AddWithValue("@loc", request.loc);
             cmd.Parameters.AddWithValue("@islocal", request.isLocal);
             cmd.Parameters.AddWithValue("@ndate", request.nDays);
             cmd.Parameters.AddWithValue("@fromdate", request.fromDate);
             cmd.Parameters.AddWithValue("@todate", request.toDate);
-            cmd.Parameters.AddWithValue("@ticket", request.Ticket);
+            cmd.Parameters.AddWithValue("@ticketid", request.TicketId);
+            cmd.Parameters.AddWithValue("@vecname", request.vehicleName);
+            cmd.Parameters.AddWithValue("@traveltime", request.TicketTime);
+            cmd.Parameters.AddWithValue("@travelloc", request.TravelLocation);
+            cmd.Parameters.AddWithValue("@hotalname", request.hotalName);
+            cmd.Parameters.AddWithValue("@hotalroomid", request.hotalroomnumber);
+            cmd.Parameters.AddWithValue("@cabname", request.cabname);
+            cmd.Parameters.AddWithValue("@cabtime", request.cabtime);
             if (conn.State == ConnectionState.Open)
                 conn.Close();
             try
@@ -111,7 +117,6 @@ namespace TravelAPI.Services
             cmd.Parameters.AddWithValue("@eId", request.EmployeeId);
             cmd.Parameters.AddWithValue("@uname", request.Name);
             cmd.Parameters.AddWithValue("@reason", request.reason);
-            cmd.Parameters.AddWithValue("@proof", request.Proof);
             cmd.Parameters.AddWithValue("@loc", request.loc);
             cmd.Parameters.AddWithValue("@islocal", request.isLocal);
             cmd.Parameters.AddWithValue("@ndate", request.nDays);
@@ -119,6 +124,7 @@ namespace TravelAPI.Services
             cmd.Parameters.AddWithValue("@todate", request.toDate);
             cmd.Parameters.AddWithValue("@mngapp", request.managerapp);
             cmd.Parameters.AddWithValue("@deptapp", request.departmentapp);
+            cmd.Parameters.AddWithValue("@status", request.status);
             if (conn.State == ConnectionState.Open)
                 conn.Close();
             try
@@ -154,14 +160,14 @@ namespace TravelAPI.Services
                 product.EmployeeId = Convert.ToInt32(item[1].ToString());
                 product.Name = item[2].ToString();
                 product.reason = item[3].ToString();
-                product.Proof = item[4].ToString();
-                product.loc = item[5].ToString();
-                product.isLocal = item[6].ToString();
-                product.nDays = Convert.ToInt32(item[7].ToString());
-                product.fromDate = item[8].ToString();
-                product.toDate = item[9].ToString();
-                product.managerapp = Convert.ToInt32(item[10].ToString());
-                product.departmentapp = Convert.ToInt32(item[11].ToString());
+                product.loc = item[4].ToString();
+                product.isLocal = item[5].ToString();
+                product.nDays = Convert.ToInt32(item[6].ToString());
+                product.fromDate = item[7].ToString();
+                product.toDate = item[8].ToString();
+                product.managerapp = item[9].ToString();
+                product.departmentapp = item[10].ToString();
+                product.status = item[11].ToString();
                 productss.Add(product);
             }
             return productss;
@@ -182,14 +188,14 @@ namespace TravelAPI.Services
                 product.EmployeeId = Convert.ToInt32(item[1].ToString());
                 product.Name = item[2].ToString();
                 product.reason = item[3].ToString();
-                product.Proof = item[4].ToString();
-                product.loc = item[5].ToString();
-                product.isLocal = item[6].ToString();
-                product.nDays = Convert.ToInt32(item[7].ToString());
-                product.fromDate = item[8].ToString();
-                product.toDate = item[9].ToString();
-                product.managerapp = Convert.ToInt32(item[10].ToString());
-                product.departmentapp = Convert.ToInt32(item[11].ToString());
+                product.loc = item[4].ToString();
+                product.isLocal = item[5].ToString();
+                product.nDays = Convert.ToInt32(item[6].ToString());
+                product.fromDate = item[7].ToString();
+                product.toDate = item[8].ToString();
+                product.managerapp = item[9].ToString();
+                product.departmentapp = item[10].ToString();
+                product.status = item[11].ToString();
                 productss.Add(product);
             }
             return productss;
@@ -212,12 +218,14 @@ namespace TravelAPI.Services
                     product.EmployeeId = Convert.ToInt32(item[1].ToString());
                     product.Name = item[2].ToString();
                     product.reason = item[3].ToString();
-                    product.Proof = item[4].ToString();
-                    product.loc = item[5].ToString();
-                    product.isLocal = item[6].ToString();
-                    product.nDays = Convert.ToInt32(item[7].ToString());
-                    product.fromDate = item[8].ToString();
-                    product.toDate = item[9].ToString();
+                    product.loc = item[4].ToString();
+                    product.isLocal = item[5].ToString();
+                    product.nDays = Convert.ToInt32(item[6].ToString());
+                    product.fromDate = item[7].ToString();
+                    product.toDate = item[8].ToString();
+                    product.managerapp = item[9].ToString();
+                    product.departmentapp = item[10].ToString();
+                    product.status = item[11].ToString();
                     productss.Add(product);
                 }
                 return productss;
@@ -231,7 +239,7 @@ namespace TravelAPI.Services
 
         public IEnumerable<Request> GetAll()
         {
-            SqlDataAdapter da = new SqlDataAdapter("proc_GetAllPostRequest", conn);
+            SqlDataAdapter da = new SqlDataAdapter("proc_GetAllonlinerequest", conn);
             da.SelectCommand.CommandType = CommandType.StoredProcedure;
             DataSet ds = new DataSet();
             da.Fill(ds);
@@ -244,17 +252,44 @@ namespace TravelAPI.Services
                 product.EmployeeId = Convert.ToInt32(item[1].ToString());
                 product.Name = item[2].ToString();
                 product.reason = item[3].ToString();
-                product.Proof = item[4].ToString();
-                product.loc = item[5].ToString();
-                product.isLocal = item[6].ToString();
-                product.nDays = Convert.ToInt32(item[7].ToString());
-                product.fromDate = item[8].ToString();
-                product.toDate = item[9].ToString();
-                product.Ticket = item[10].ToString();
+                product.loc = item[4].ToString();
+                product.isLocal = item[5].ToString();
+                product.nDays = Convert.ToInt32(item[6].ToString());
+                product.fromDate = item[7].ToString();
+                product.toDate = item[8].ToString();
+                product.managerapp = item[9].ToString();
+                product.departmentapp = item[10].ToString();
+                product.status = item[11].ToString();
                 productss.Add(product);
             }
             return productss;
         }
+        
+            public async Task<Request> EmployeebyId(Request request)
+        {
+            SqlCommand cmd = new SqlCommand("proc_MyTravelRequest", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@uid", request.EmployeeId);
+            if (conn.State == ConnectionState.Open)
+                conn.Close();
+            try
+            {
+                conn.Open();
+                int Result = cmd.ExecuteNonQuery();
+                if (Result > 0)
+                    return request;
+            }
+            catch (Exception e)
+            {
+                Debug.Write(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return null;
+        }
+
 
     }
 }

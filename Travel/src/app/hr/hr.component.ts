@@ -41,5 +41,18 @@ export class HrComponent implements OnInit {
     localStorage.clear();
     this.router.navigateByUrl("");
    }
+   status(){
+    this.router.navigateByUrl("status");
+
+   }
+   paststatus(){
+
+   }
+   GetAllonline(){
+    this.router.navigateByUrl("status"); 
+   }
+   request(){
+    this.router.navigateByUrl("request");
+   }
 
 }

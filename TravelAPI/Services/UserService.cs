@@ -109,7 +109,9 @@ namespace TravelAPI.Services
                 product.Mobile = item[7].ToString();
                 product.Email = item[8].ToString();
                 product.Address = item[9].ToString();
-                product.DepartmentId = item[10].ToString();
+                product.ManagerId = item[10].ToString();
+                product.DepartmentId = item[11].ToString();
+                product.DeprtmentHeadId = item[12].ToString();
                 productss.Add(product);
             }
             return productss;

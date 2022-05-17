@@ -11,3 +11,42 @@ span{
 table{
     background-color: antiquewhite;
 }
+#divCart{
+    float: right;
+  }
+  img{
+  margin-left: -100px;
+    height: 60px;
+  }
+  
+  .btn{
+    text-transform: capitalize;
+    text-decoration: none;
+    background-color: #fabd02;
+    padding: 10px 20px;
+    border-radius: 30px;
+   
+  }
+  
+  .nav{
+    text-transform: capitalize;
+    width: 85%;
+    height: 15%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    
+  }
+  table{
+    background-color: antiquewhite;
+  }
+  .nav-item{
+    
+   margin: 5px;
+  }
+  
+  span{
+    margin-left: 40%;
+  }

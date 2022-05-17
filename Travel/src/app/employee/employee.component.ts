@@ -26,13 +26,16 @@ export class EmployeeComponent implements OnInit {
     this.router.navigateByUrl("request");
    }
 
-   ViewRequest(){
-     
+   status(){
+     this.router.navigateByUrl("status");     
    }
 
    Logout(){
     localStorage.clear();
     this.router.navigateByUrl("");
+   }
+   paststatus(){
+     
    }
 
   ngOnInit(): void {

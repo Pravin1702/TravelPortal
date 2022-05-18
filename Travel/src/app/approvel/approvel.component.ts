@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { ProfileComponent } from '../profile/profile.component';
+import { Request } from '../models/request';
 import { RequestService } from '../service/request.service';
 
 @Component({
@@ -14,40 +14,33 @@ views:any;
 role:any;
 id:any;
 name:any;
+request:Request;
   constructor(private requestservice:RequestService,
     private router:Router,
     private dialogRef:MatDialog) {
-    this.role=localStorage.getItem("role");
+      this.request=new Request();
+      this.role=localStorage.getItem("role");
     this.name=localStorage.getItem("uname");
     this.id=localStorage.getItem("id");
-    this.requestservice.getAllEmployee().subscribe(data=>{
-      console.log(data);
-      this.views=data
-    }); 
+    if(this.role=='hr'){
+      this.requestservice.getAllEmployee().subscribe(data=>{
+        console.log(data);
+        this.views=data
+      }); 
+    }
+    else{
+      this.request=new Request();
+      this.request.employeeId=this.id;
+      this.requestservice.getByEmployee(this.request).subscribe(data=>{
+        console.log(data);
+        this.views=data
+      }); 
+    }
+  
    }
-
-   Home(){
-
+   noclick(){
+    this.dialogRef.closeAll();
    }
-   Request(){
-    this.router.navigateByUrl("request");
-
-  }
-  status(){
-    this.router.navigateByUrl("status");
-
-  }
-  paststatus(){
-
-  }
-  Logout(){
-    localStorage.clear();
-    this.router.navigateByUrl("");
-  }
-  open(){
-    this.dialogRef.open(ProfileComponent);
-
-  }
 
    
 

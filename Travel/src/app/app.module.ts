@@ -24,6 +24,7 @@ import { ViewrequestComponent } from './viewrequest/viewrequest.component';
 import { ViewsComponent } from './views/views.component';
 import { ApprovelComponent } from './approvel/approvel.component';
 import { TicketbookingComponent } from './ticketbooking/ticketbooking.component';
+import { PosttravelComponent } from './posttravel/posttravel.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { TicketbookingComponent } from './ticketbooking/ticketbooking.component'
     ViewsComponent,
     ApprovelComponent,
     TicketbookingComponent,
+    PosttravelComponent,
   ],
   imports: [
     BrowserModule,

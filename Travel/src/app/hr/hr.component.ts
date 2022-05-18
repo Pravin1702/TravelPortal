@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ApprovelComponent } from '../approvel/approvel.component';
+import { PosttravelComponent } from '../posttravel/posttravel.component';
 import { ProfileComponent } from '../profile/profile.component';
+import { RegisterComponent } from '../register/register.component';
 import { RequestService } from '../service/request.service';
+import { ViewsComponent } from '../views/views.component';
 
 @Component({
   selector: 'app-hr',
@@ -15,7 +19,11 @@ export class HrComponent implements OnInit {
   constructor(private dialogRef:MatDialog,
     private router:Router,
     private requestservice:RequestService) { 
-      this.name=localStorage.getItem("uname");
+      this.name=localStorage.getItem("uname");      
+      if(this.name==null)
+      {
+        this.router.navigateByUrl("");
+      }
     }
 
   ngOnInit(): void {
@@ -26,33 +34,29 @@ export class HrComponent implements OnInit {
    }
 
    AddEmployee(){
-    this.router.navigateByUrl("register"); 
+    this.dialogRef.open(RegisterComponent);
    }
 
    GetAllEmployee(){
-     this.router.navigateByUrl("view");
+    this.dialogRef.open(ViewsComponent);
    }
 
-   GetAllTravelEmployee(){
-    this.router.navigateByUrl("approvel");
-   }
-
+ 
   Logout(){
     localStorage.clear();
     this.router.navigateByUrl("");
    }
    status(){
-    this.router.navigateByUrl("status");
-
+    this.dialogRef.open(ApprovelComponent);
    }
    paststatus(){
-
+    this.dialogRef.open(PosttravelComponent);
    }
-   GetAllonline(){
-    this.router.navigateByUrl("status"); 
-   }
-   request(){
-    this.router.navigateByUrl("request");
-   }
+  //  GetAllonline(){
+  //   this.router.navigateByUrl("status"); 
+  //  }
+  //  request(){
+  //   this.router.navigateByUrl("request");
+  //  }
 
 }

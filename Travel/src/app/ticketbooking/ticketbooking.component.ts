@@ -34,26 +34,10 @@ export class TicketbookingComponent implements OnInit {
    
  ngOnInit(): void {
  }
- Home(){
-
-}
-Request(){
-  this.router.navigateByUrl("request");
-}
-status(){
-  this.router.navigateByUrl("status");
-}
-paststatus(){
-
-}
-Logout(){
-  localStorage.clear();
-  this.router.navigateByUrl(""); 
-}
-open(){
-  this.dialogRef.open(ProfileComponent);
-}
-
+ noclick(){
+  this.dialogRef.closeAll();
+ }
+ 
  reset(){
    this.request=new Request();
  }

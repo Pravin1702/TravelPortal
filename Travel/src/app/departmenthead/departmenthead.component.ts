@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ApprovelComponent } from '../approvel/approvel.component';
+import { PosttravelComponent } from '../posttravel/posttravel.component';
 import { ProfileComponent } from '../profile/profile.component';
+import { RequestComponent } from '../request/request.component';
+import { ViewrequestComponent } from '../viewrequest/viewrequest.component';
 
 @Component({
   selector: 'app-departmenthead',
@@ -14,6 +18,11 @@ export class DepartmentheadComponent implements OnInit {
   constructor(private dialogRef:MatDialog,
     private router:Router) { 
       this.name=localStorage.getItem("uname");
+      this.name=localStorage.getItem("uname");
+      if(this.name==null)
+      {
+        this.router.navigateByUrl("");
+      }
     }
 
   ngOnInit(): void {
@@ -29,18 +38,17 @@ export class DepartmentheadComponent implements OnInit {
    }
 
    Request(){
-    this.router.navigateByUrl("request");
+    this.dialogRef.open(RequestComponent);
    }
 
    viewCart(){
-     this.router.navigateByUrl("viewcart");
+    this.dialogRef.open(ViewrequestComponent);
    }
    paststatus(){
-
+    this.dialogRef.open(PosttravelComponent);
    }
    status(){
-    this.router.navigateByUrl("status");
-
+    this.dialogRef.open(ApprovelComponent);
    }
 
 }

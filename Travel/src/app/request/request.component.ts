@@ -1,3 +1,4 @@
+import { CloseScrollStrategy } from '@angular/cdk/overlay';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -14,6 +15,7 @@ export class RequestComponent implements OnInit {
   request:Request;
   role:any;
   name:any;
+  id:any;
 
   constructor(private requestservice:RequestService,
     private router:Router,
@@ -21,34 +23,16 @@ export class RequestComponent implements OnInit {
       this.request=new Request();
       this.role=localStorage.getItem("role");
       this.name=localStorage.getItem("uname");
+      this.id=localStorage.getItem("id");
      }
 
      AddRequest(){
         this.requestservice.EmployeeRequest(this.request).subscribe(sample=>{
           console.log(sample);});
      }
-     Home(){
-
-    }
-    Request(){
-      this.router.navigateByUrl("request");
-  
-    }
-    status(){
-      this.router.navigateByUrl("status");
-  
-    }
-    paststatus(){
-  
-    }
-    Logout(){
-      localStorage.clear();
-      this.router.navigateByUrl("");
-    }
-    open(){
-      this.dialogRef.open(ProfileComponent);
-  
-    }
+     noclick(){
+      this.dialogRef.closeAll();
+     }
 
      reset(){
        this.request=new Request();

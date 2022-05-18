@@ -1,21 +1,4 @@
-<div class="nav">
-  <nav class="navbar navbar-expand-lg ">
-    <img (click)="Home()" src="../assets/images/Kanini.svg">
-        <li class="nav-item">
-          <a class="btn" (click)="Request()">Add Request</a>
-        </li>
-        <li class="nav-item">
-          <a class="btn" (click)="status()">My Status</a>
-        </li>
-        <li class="nav-item">
-          <a class="btn" (click)="paststatus()">My Past Status</a>
-        </li>
-        <li class="nav-item">
-         <a class="btn" (click)="Logout()">Logout</a>
-        </li>
-        <a class="btn" (click)="open()">{{name}}</a>
-        </nav>
-</div>
+
 
 <section class="h-100 bg-dark">
       <div class="container py-5 h-100">
@@ -117,3 +100,8 @@
         </div>
       </div>
     </section>
+    <div mat-dialog-actions>
+      <button mat-raised-button matDialogClose (click)="noclick()">
+        close
+      </button>
+  </div>

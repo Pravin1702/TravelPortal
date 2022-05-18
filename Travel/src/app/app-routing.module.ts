@@ -9,6 +9,7 @@ import { HrComponent } from './hr/hr.component';
 import { LoginComponent } from './login/login.component';
 import { ManagerComponent } from './manager/manager.component';
 import { MenuComponent } from './menu/menu.component';
+import { PosttravelComponent } from './posttravel/posttravel.component';
 import { RegisterComponent } from './register/register.component';
 import { RequestComponent } from './request/request.component';
 import { TicketbookingComponent } from './ticketbooking/ticketbooking.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path:'viewcart',component:ViewrequestComponent},
   {path:'view',component:ViewsComponent},
   {path:'register',component:RegisterComponent},
+  {path:'posttravel',component:PosttravelComponent},
   {path:'status',component:ApprovelComponent},
   {path:'ticketprovider',component:TicketbookingComponent},
   {path:'request',component:RequestComponent},

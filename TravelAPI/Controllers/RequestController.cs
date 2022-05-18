@@ -121,9 +121,9 @@ namespace TravelAPI.Controllers
         [HttpPost]
         [Route("EmployeebyId")]
 
-        public async Task<ActionResult<Request>> EmployeebyId(Request user)
+        public async Task<ActionResult<IEnumerable<Request>>> EmployeebyId(Request user)
         {
-            var emp = await _repo.EmployeebyId(user);
+            var emp =  _repo.EmployeebyId(user).ToList();
             if (emp == null)
             {
                 return BadRequest("Some thing is rong please try later");

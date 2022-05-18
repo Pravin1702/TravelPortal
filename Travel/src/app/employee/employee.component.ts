@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ApprovelComponent } from '../approvel/approvel.component';
+import { PosttravelComponent } from '../posttravel/posttravel.component';
 import { ProfileComponent } from '../profile/profile.component';
+import { RequestComponent } from '../request/request.component';
 
 @Component({
   selector: 'app-employee',
@@ -23,11 +26,11 @@ export class EmployeeComponent implements OnInit {
    }
 
    Request(){
-    this.router.navigateByUrl("request");
+    this.dialogRef.open(RequestComponent);
    }
 
    status(){
-     this.router.navigateByUrl("status");     
+    this.dialogRef.open(ApprovelComponent);
    }
 
    Logout(){
@@ -35,7 +38,7 @@ export class EmployeeComponent implements OnInit {
     this.router.navigateByUrl("");
    }
    paststatus(){
-     
+    this.dialogRef.open(PosttravelComponent);
    }
 
   ngOnInit(): void {

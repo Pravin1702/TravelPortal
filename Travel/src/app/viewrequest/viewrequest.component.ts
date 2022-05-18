@@ -40,18 +40,21 @@ export class ViewrequestComponent implements OnInit {
      
      Ok(e:Request){
        if(this.urole=='manager'){
-        e.managerapp="approvel";
+        e.managerapp="approved";
         this.requestservice.ManagerRequest(e).subscribe(sample=>{
          console.log(sample);
         });
+    this.dialogRef.closeAll();
+
         this.router.navigateByUrl("manager");
        }   
        else if(this.urole=='deptment'){
-        e.departmentapp="approvel";
+        e.departmentapp="approved";
         this.requestservice.DepartRequest(e).subscribe(sample=>{
          console.log(sample);
         });
-        this.router.navigateByUrl("head");
+    this.dialogRef.closeAll();
+    this.router.navigateByUrl("head");
        }
      }
      Cancel(e:Request){
@@ -60,14 +63,16 @@ export class ViewrequestComponent implements OnInit {
       this.requestservice.ManagerRequest(e).subscribe(sample=>{
        console.log(sample);
       });
-      this.router.navigateByUrl("manager");
+    this.dialogRef.closeAll();
+    this.router.navigateByUrl("manager");
       }
       else if(this.urole=='deptment'){
         e.departmentapp="cancel";
         this.requestservice.DepartRequest(e).subscribe(sample=>{
          console.log(sample);
         });
-        this.router.navigateByUrl("head");
+    this.dialogRef.closeAll();
+    this.router.navigateByUrl("head");
        }
       
      }

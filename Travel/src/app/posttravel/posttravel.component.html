@@ -1,1 +1,43 @@
-<p>posttravel works!</p>
+<table class="table" id='tab'>
+    <thead>
+    <tr>
+        <th scope="col">TravelId</th>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Reason</th>
+        <th scope="col">Location</th>
+        <th scope="col">Travel</th>
+        <th scope="col">Numbers of Days</th>
+        <th scope="col">From Date</th>
+        <th scope="col">To Date</th>
+        <th scope="col">Ticket Id</th>
+        <th scope="col">Vechicle Type</th>
+        <th scope="col">Ticket Time</th>
+        <th scope="col">Travel Sport</th>
+        <th scope="col">Hotal Name</th>
+        <th scope="col">Hotal Room Id</th>
+        <th scope="col">Cab Name</th>
+        <th scope="col">Cab Time</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let e of request">
+        <td>{{ e.travelId}}</td>
+        <td>{{ e.employeeId}}</td>
+        <td>{{ e.name}}</td>
+        <td>{{ e.reason}}</td>
+        <td>{{ e.loc}}</td>
+        <td>{{ e.isLocal }}</td>
+        <td>{{ e.nDays}}</td>
+        <td>{{ e.fromDate}}</td>
+        <td>{{ e.toDate}}</td>
+        <td>{{e.ticketId}}</td>
+        <td>{{e.vehicleName}}</td>
+        <td>{{e.ticketTime}}</td>
+        <td>{{e.travelLocation}}</td>
+        <td>{{e.hotalName}}</td>
+        <td>{{e.hotalroomnumber}}</td>
+        <td>{{e.cabname}}</td>
+        <td>{{e.cabtime}}</td>
+    </tr>
+    </tbody>

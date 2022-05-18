@@ -27,8 +27,20 @@ export class RequestComponent implements OnInit {
      }
 
      AddRequest(){
+       this.request.employeeId=this.id;
+       this.request.name=this.name;
+       if(this.role=='manager')
+       {
+         this.request.managerapp="approved"
         this.requestservice.EmployeeRequest(this.request).subscribe(sample=>{
           console.log(sample);});
+          this.dialogRef.closeAll();
+       }
+       else{
+        this.requestservice.EmployeeRequest(this.request).subscribe(sample=>{
+          console.log(sample);});
+          this.dialogRef.closeAll();
+        }
      }
      noclick(){
       this.dialogRef.closeAll();

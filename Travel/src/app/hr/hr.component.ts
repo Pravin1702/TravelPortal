@@ -15,14 +15,23 @@ import { ViewsComponent } from '../views/views.component';
 })
 export class HrComponent implements OnInit {
   name:any;
+  role:any;
 
   constructor(private dialogRef:MatDialog,
     private router:Router,
     private requestservice:RequestService) { 
       this.name=localStorage.getItem("uname");      
-      if(this.name==null)
+      this.role=localStorage.getItem("role");
+      if(this.role==null )
       {
-        this.router.navigateByUrl("");
+       this.router.navigateByUrl(""); 
+      }
+      else if(this.role=='hr'){
+       this.router.navigateByUrl("hr"); 
+      }
+      else{
+       this.router.navigateByUrl(""); 
+       localStorage.clear();
       }
     }
 

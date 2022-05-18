@@ -14,14 +14,22 @@ import { ViewrequestComponent } from '../viewrequest/viewrequest.component';
 })
 export class DepartmentheadComponent implements OnInit {
   name:any;
+  role:any;
 
   constructor(private dialogRef:MatDialog,
     private router:Router) { 
       this.name=localStorage.getItem("uname");
-      this.name=localStorage.getItem("uname");
-      if(this.name==null)
+      this.role=localStorage.getItem("role");
+      if(this.role==null )
       {
-        this.router.navigateByUrl("");
+       this.router.navigateByUrl(""); 
+      }
+      else if(this.role=='deptment'){
+       this.router.navigateByUrl("head"); 
+      }
+      else{
+       this.router.navigateByUrl(""); 
+       localStorage.clear();
       }
     }
 

@@ -5,20 +5,19 @@
 <tr>
     <th scope="col">TravelId</th>
     <th scope="col">Id</th>
-    <!-- <th scope="col">Name</th>
+    <th scope="col">Name</th>
     <th scope="col">Reason</th>
     <th scope="col">Location</th>
     <th scope="col">Travel</th>
     <th scope="col">Numbers of Days</th>
     <th scope="col">From Date</th>
-    <th scope="col">To Date</th> -->
-    <th scope="col">Ticket</th>
+    <th scope="col">To Date</th>
     <th scope="col">Ticket Id</th>
     <th scope="col">Vechicle Type</th>
     <th scope="col">Ticket Time</th>
-    <th scope="col">Travel Sport</th>
-    <th scope="col">Hotal Name</th>
-    <th scope="col">Hotal Room Id</th>
+    <th scope="col">Travel Spot</th>
+    <th scope="col">Hotel Name</th>
+    <th scope="col">Hotel Room Id</th>
     <th scope="col">Cab Name</th>
     <th scope="col">Cab Time</th>
 </tr>
@@ -27,22 +26,21 @@
 <tr *ngFor="let e of request">
     <td>{{ e.travelId}}</td>
     <td>{{ e.employeeId}}</td>
-    <!-- <td>{{ e.name}}</td>
+    <td>{{ e.name}}</td>
     <td>{{ e.reason}}</td>
     <td>{{ e.loc}}</td>
     <td>{{ e.isLocal }}</td>
     <td>{{ e.nDays}}</td>
     <td>{{ e.fromDate}}</td>
-    <td>{{ e.toDate}}</td> -->
-    <td><input type="text"  [(ngModel)] = "e.ticket"/></td>
+    <td>{{ e.toDate}}</td>
     <td><input type="text"  [(ngModel)] = "e.ticketId"/></td>
     <td><input type="text"  [(ngModel)] = "e.vehicleName"/></td>
-    <td><input type="text"  [(ngModel)] = "e.ticketTime"/></td>
+    <td><input type="time"  [(ngModel)] = "e.ticketTime"/></td>
     <td><input type="text"  [(ngModel)] = "e.travelLocation"/></td>
     <td><input type="text"  [(ngModel)] = "e.hotalName"/></td>
     <td><input type="text"  [(ngModel)] = "e.hotalroomnumber"/></td>
     <td><input type="text"  [(ngModel)] = "e.cabname"/></td>
-    <td><input type="text"  [(ngModel)] = "e.cabtime"/></td>
+    <td><input type="time"  [(ngModel)] = "e.cabtime"/></td>
     <button class="btn btn-primary" (click)="Ok(e)" >Approvel</button>
 </tr>
 </tbody>

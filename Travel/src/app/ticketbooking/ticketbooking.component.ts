@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Request } from '../models/request';
-import { ProfileComponent } from '../profile/profile.component';
 import { RequestService } from '../service/request.service';
 
 @Component({
@@ -27,9 +26,15 @@ export class TicketbookingComponent implements OnInit {
      }
      
      Ok(e:Request){
+       e.status="approved"
        this.requestservice.FacilityRequest(e).subscribe(data=>{
          console.log(data);
        });
+       this.requestservice.facilityapp(e).subscribe(data=>{
+        console.log(data);
+      });
+  this.dialogRef.closeAll();
+
     }
    
  ngOnInit(): void {

@@ -13,12 +13,21 @@ import { RequestComponent } from '../request/request.component';
 })
 export class EmployeeComponent implements OnInit {
   name:any;
+  role:any;
   constructor(private dialogRef:MatDialog,
     private router:Router) {
    this.name=localStorage.getItem("uname");
-   if(this.name==null )
+   this.role=localStorage.getItem("role");
+   if(this.role==null )
    {
     this.router.navigateByUrl(""); 
+   }
+   else if(this.role=='employee'){
+    this.router.navigateByUrl("employee"); 
+   }
+   else{
+    this.router.navigateByUrl(""); 
+    localStorage.clear();
    }
    }
    open(){

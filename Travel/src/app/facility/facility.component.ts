@@ -14,15 +14,23 @@ import { TicketbookingComponent } from '../ticketbooking/ticketbooking.component
   styleUrls: ['./facility.component.css']
 })
 export class FacilityComponent implements OnInit {
-
+  role:any;
   name:any;
 
   constructor(private dialogRef:MatDialog,
     private router:Router) { 
       this.name=localStorage.getItem("uname");
-      if(this.name==null)
+      this.role=localStorage.getItem("role");
+      if(this.role==null )
       {
-        this.router.navigateByUrl("");
+       this.router.navigateByUrl(""); 
+      }
+      else if(this.role=='facility'){
+       this.router.navigateByUrl("facility"); 
+      }
+      else{
+       this.router.navigateByUrl(""); 
+       localStorage.clear();
       }
     }
 

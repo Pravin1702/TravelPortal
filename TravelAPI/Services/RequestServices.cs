@@ -109,6 +109,33 @@ namespace TravelAPI.Services
             return null;
         }
 
+        public async Task<Request> facilityapprovel(Request request)
+        {
+            SqlCommand cmd = new SqlCommand("proc_GetAllonlinefacilityclose", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@tid", request.TravelId);
+            cmd.Parameters.AddWithValue("@facilityapp", request.status);
+            if (conn.State == ConnectionState.Open)
+                conn.Close();
+            try
+            {
+                conn.Open();
+                int Result = cmd.ExecuteNonQuery();
+                if (Result > 0)
+                    return request;
+            }
+            catch (Exception e)
+            {
+                Debug.Write(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return null;
+        }
+
+
 
         public async Task<Request> Employee(Request request)
         {
@@ -236,6 +263,48 @@ namespace TravelAPI.Services
             }
             return null;
         }
+        
+        public IEnumerable<Request> getbyidfacility(Request request)
+        {
+            int id = request.TravelId;
+            try
+            {
+                SqlDataAdapter da = new SqlDataAdapter("proc_GetAllonlinefacility", conn);
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                List<Request> productss = new List<Request>();
+                Request product;
+                foreach (DataRow item in ds.Tables[0].Rows)
+                {
+                    if (Convert.ToInt32(item[0].ToString()) == id)
+                    {
+                        product = new Request();
+                        product.TravelId = Convert.ToInt32(item[0].ToString());
+                        product.EmployeeId = Convert.ToInt32(item[1].ToString());
+                        product.Name = item[2].ToString();
+                        product.reason = item[3].ToString();
+                        product.loc = item[4].ToString();
+                        product.isLocal = item[5].ToString();
+                        product.nDays = Convert.ToInt32(item[6].ToString());
+                        product.fromDate = item[7].ToString();
+                        product.toDate = item[8].ToString();
+                        product.managerapp = item[9].ToString();
+                        product.departmentapp = item[10].ToString();
+                        product.status = item[11].ToString();
+                        productss.Add(product);
+                        
+                    }
+                  
+                }
+                return productss;
+            }
+            catch (Exception e)
+            {
+                Debug.Write(e.Message);
+            }
+            return null;
+        }
 
         public IEnumerable<Request> GetAll()
         {
@@ -295,6 +364,78 @@ namespace TravelAPI.Services
 
                 }
               
+            }
+            return productss;
+        }
+        
+        public IEnumerable<Request> GetAllPosttravel()
+        {
+            SqlDataAdapter da = new SqlDataAdapter("proc_GetAllPostRequest", conn);
+            da.SelectCommand.CommandType = CommandType.StoredProcedure;
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            List<Request> productss = new List<Request>();
+            Request product;
+            foreach (DataRow item in ds.Tables[0].Rows)
+            {
+                product = new Request();
+                product.TravelId = Convert.ToInt32(item[0].ToString());
+                product.EmployeeId = Convert.ToInt32(item[1].ToString());
+                product.Name = item[2].ToString();
+                product.reason = item[3].ToString();
+                product.loc = item[4].ToString();
+                product.isLocal = item[5].ToString();
+                product.nDays = Convert.ToInt32(item[6].ToString());
+                product.fromDate = item[7].ToString();
+                product.toDate = item[8].ToString();
+                product.TicketId = item[9].ToString();
+                product.vehicleName = item[10].ToString();
+                product.TicketTime = item[11].ToString();
+                product.TravelLocation = item[12].ToString();
+                product.hotalName = item[13].ToString();
+                product.hotalroomnumber = item[14].ToString();
+                product.cabname = item[15].ToString();
+                product.cabtime = item[16].ToString();
+                productss.Add(product);
+            }
+            return productss;
+        }
+
+        public IEnumerable<Request> postEmployeebyId(Request request)
+        {
+            int id = request.EmployeeId;
+            SqlDataAdapter da = new SqlDataAdapter("proc_GetAllPostRequest", conn);
+            da.SelectCommand.CommandType = CommandType.StoredProcedure;
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            List<Request> productss = new List<Request>();
+            Request product;
+            foreach (DataRow item in ds.Tables[0].Rows)
+            {
+                if (Convert.ToInt32(item[1].ToString()) == id)
+                {
+                    product = new Request();
+                    product.TravelId = Convert.ToInt32(item[0].ToString());
+                    product.EmployeeId = Convert.ToInt32(item[1].ToString());
+                    product.Name = item[2].ToString();
+                    product.reason = item[3].ToString();
+                    product.loc = item[4].ToString();
+                    product.isLocal = item[5].ToString();
+                    product.nDays = Convert.ToInt32(item[6].ToString());
+                    product.fromDate = item[7].ToString();
+                    product.toDate = item[8].ToString();
+                    product.TicketId = item[9].ToString();
+                    product.vehicleName = item[10].ToString();
+                    product.TicketTime = item[11].ToString();
+                    product.TravelLocation = item[12].ToString();
+                    product.hotalName = item[13].ToString();
+                    product.hotalroomnumber = item[14].ToString();
+                    product.cabname = item[15].ToString();
+                    product.cabtime = item[16].ToString();
+                    productss.Add(product);
+
+                }
+
             }
             return productss;
         }

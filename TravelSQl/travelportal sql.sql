@@ -119,6 +119,12 @@ begin
 	select * from OnlineRequest where status='process' and departmentapp='approvel'
 end
 
+create proc proc_GetAllonlinefacilityclose(@tid int,@facilityapp varchar(20))
+as
+begin
+	UPDATE OnlineRequest SET status=@facilityapp WHERE TravelId=@tid
+end
+
 create proc proc_MyTravelRequest(@uid int)
 as
 begin

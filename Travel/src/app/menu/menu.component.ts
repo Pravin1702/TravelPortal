@@ -9,12 +9,35 @@ import { LoginComponent } from '../login/login.component';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  uname:any;
+  role:any;
 
   constructor(private router:Router,
     private dialogRef:MatDialog
     ) {
-    this.uname=localStorage.getItem("uname");
+    this.role=localStorage.getItem("role");
+    if(this.role=='employee')
+    {
+      this.router.navigateByUrl("employee");
+    }
+    else if(this.role=='hr')
+    {
+      this.router.navigateByUrl("hr");
+    }
+    else if(this.role=='facility')
+    {
+      this.router.navigateByUrl("facility");
+    }
+    else if(this.role=='manager')
+    {
+      this.router.navigateByUrl("manager");
+    }
+    else if(this.role=='deptment')
+    {
+      this.router.navigateByUrl("head");
+    }
+    else{
+      this.router.navigateByUrl("");
+    }
    }
    
    openDialog(){

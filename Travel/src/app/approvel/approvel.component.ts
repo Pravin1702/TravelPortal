@@ -22,10 +22,14 @@ request:Request;
       this.role=localStorage.getItem("role");
     this.name=localStorage.getItem("uname");
     this.id=localStorage.getItem("id");
-    if(this.role=='hr'){
+    if(this.role=='hr' || this.role=='deptment' ){
       this.requestservice.getAllEmployee().subscribe(data=>{
         console.log(data);
-        this.views=data
+        this.views=data;
+        if(data==null)
+        {
+        alert("Invalid Values");
+        }
       }); 
     }
     else{
@@ -33,7 +37,11 @@ request:Request;
       this.request.employeeId=this.id;
       this.requestservice.getByEmployee(this.request).subscribe(data=>{
         console.log(data);
-        this.views=data
+        this.views=data;
+        if(this.views==null)
+        {
+        alert("Invalid Values");
+        }
       }); 
     }
   

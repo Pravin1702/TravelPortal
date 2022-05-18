@@ -49,4 +49,13 @@ export class RequestService{
     getByEmployee(request:Request){
         return this.httpClient.post("http://localhost:54465/api/Request/EmployeebyId",request);
     }
+    getAllpostEmployee(){
+        return this.httpClient.get("http://localhost:54465/api/Request/GetAllPosttravel");
+    }
+    getpostByEmployee(request:Request){
+        return this.httpClient.post("http://localhost:54465/api/Request/PostEmployeebyId",request);
+    }
+    facilityapp(request:Request){
+        return this.httpClient.post("http://localhost:54465​/api​/Request​/Facilityapprovel",request);
+    }
 }

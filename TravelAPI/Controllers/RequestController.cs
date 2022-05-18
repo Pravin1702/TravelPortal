@@ -60,6 +60,19 @@ namespace TravelAPI.Controllers
         }
 
         [HttpPost]
+        [Route("Facilityapprovel")]
+
+        public async Task<ActionResult<Request>> facilityapprovel(Request user)
+        {
+            var emp = await _repo.facilityapprovel(user);
+            if (emp == null)
+            {
+                return BadRequest("Some thing is rong please try later");
+            }
+            return Created("Approve Manager", emp);
+        }
+
+        [HttpPost]
         [Route("Facility")]
 
         public async Task<ActionResult<Request>> Facility(Request user)
@@ -107,6 +120,19 @@ namespace TravelAPI.Controllers
             return Ok(prd);
         }
 
+        [HttpPost]
+        [Route("getbyidfacility")]
+
+        public async Task<ActionResult<IEnumerable<Request>>> getbyidfacility(Request user)
+        {
+            var emp = _repo.getbyidfacility(user).ToList();
+            if (emp == null)
+            {
+                return BadRequest("Some thing is rong please try later");
+            }
+            return Created("Approve Manager", emp);
+        }
+
         [HttpGet]
         [Route("GetAll_Travel")]
 
@@ -124,6 +150,30 @@ namespace TravelAPI.Controllers
         public async Task<ActionResult<IEnumerable<Request>>> EmployeebyId(Request user)
         {
             var emp =  _repo.EmployeebyId(user).ToList();
+            if (emp == null)
+            {
+                return BadRequest("Some thing is rong please try later");
+            }
+            return Created("Approve Manager", emp);
+        }
+
+        [HttpGet]
+        [Route("GetAllPosttravel")]
+
+        public async Task<ActionResult<IEnumerable<User>>> GetAllPosttravel()
+        {
+            var prd = _repo.GetAllPosttravel().ToList();
+            if (prd.Count == 0)
+                return NotFound("No Employee present");
+            return Ok(prd);
+        }
+        
+        [HttpPost]
+        [Route("PostEmployeebyId")]
+
+        public async Task<ActionResult<IEnumerable<Request>>> postEmployeebyId(Request user)
+        {
+            var emp = _repo.postEmployeebyId(user).ToList();
             if (emp == null)
             {
                 return BadRequest("Some thing is rong please try later");
